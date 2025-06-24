@@ -6,9 +6,19 @@
             <img [src]="producto.imagen" [alt]="producto.nombre">
             <h3>{{producto.nombre}}</h3>
             <p>{{producto.descripcion}}</p>
+            
+            <!-- Mostrar descripción completa si está activa -->
+            @if(producto.mostrarDescripcionCompleta) {
+              <div class="descripcion-completa">
+                <p>{{producto.descripcionCompleta}}</p>
+              </div>
+            }
+            
             <strong>{{producto.precio}}</strong>
             <br>
-            <button>Ver más</button>
+            <button (click)="toggleDescripcion(producto)">
+              {{ producto.mostrarDescripcionCompleta ? 'Ver menos' : 'Ver más' }}
+            </button>
         </article>
     }
 </section>
